@@ -1,0 +1,102 @@
+.wrapper--fin {
+    // background-color: #cddedc;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .finbox {
+        margin: 30px 0;
+        padding: 0px 20px;
+        width: 90%;
+        background-color: #eee;
+    }
+
+    a {
+        color: #65ada4;
+        &:hover {
+            color: #b9ccc9;
+        }
+    }
+    h6 {
+        color: #2f9488;
+        font-size: 1.2rem;
+        padding: 13px 0;
+    } 
+}
+
+.ant-tag-blue {
+    color: #fafafa;
+    background: #65ada4;
+    border-color: rgb(49, 103, 97);
+}
+
+.ant-btn-primary {
+    color: #fff;
+    background-color: #a58cd2;
+    border-color: #937ac1;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.035);
+    background-color: #8a8a8a;
+    border-color: #a5a5a5;
+    // &:hover {
+    //     border-color: rgb(165, 140, 210);
+    // }
+}
+.ant-input-group.ant-input-group-compact > *:last-child:hover, .ant-input-group.ant-input-group-compact > .ant-select:last-child > .ant-select-selection:hover, .ant-input-group.ant-input-group-compact > .ant-calendar-picker:last-child .ant-input:hover, .ant-input-group.ant-input-group-compact > .ant-select-auto-complete:last-child .ant-input:hover, .ant-input-group.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input:hover, .ant-input-group.ant-input-group-compact > .ant-cascader-picker-focused:last-child .ant-input:hover, .ant-input-group.ant-input-group-compact > .ant-mention-wrapper:last-child .ant-mention-editor:hover, .ant-input-group.ant-input-group-compact > .ant-time-picker:last-child .ant-time-picker-input:hover {
+    background-color: rgb(187, 167, 222);
+    border-color: rgb(165, 140, 210);
+    background-color: #8a8a8a;
+    border-color: #a5a5a5;
+}
+.ant-btn-primary:hover {
+    border-color: #a58cd2;
+    background-color: #bba7de;
+    background-color: #8a8a8a;
+    border-color: #a5a5a5;
+}
+.anticon {
+    // color: rgb(101, 173, 164);
+}
+
+.ant-table-tbody > tr:hover > td {
+    background: #e2e8e8;
+}
+
+.ant-card-bordered {
+    border: 2px solid #e8e8e8;
+    border-radius: 7px;
+}
+
+.ant-input-group.ant-input-group-compact > .ant-select > .ant-select-selection:focus {
+    border-color: #cddedc;
+    background-color: #cddedc;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(205, 222, 220);
+    border-right-width: 2px !important;
+}
+
+.ant-select-dropdown-menu-item:hover {
+    background-color: rgba(205, 222, 220, 0.5);
+}
+.ant-select-dropdown-menu-item-active {
+    background-color: rgba(205, 222, 220, 0.5);
+}
+.ant-input-group.ant-input-group-compact > .ant-input:not(:first-child):not(:last-child):focus {
+    border-color: #cddedc;
+    box-shadow: 0 0 0 2px rgb(205, 222, 220);
+}
+.ant-input-group.ant-input-group-compact > .ant-select > .ant-select-selection:hover, 
+.ant-input-group.ant-input-group-compact > .ant-input:not(:first-child):not(:last-child):hover,
+.ant-input-group.ant-input-group-compact > .ant-calendar-picker .ant-input:hover {
+    border-color: #cddedc;
+}
+.ant-input-group.ant-input-group-compact > * {
+    margin: 4px 0;
+}
+.ant-input-group.ant-input-group-compact > .ant-calendar-picker .ant-input,
+.ant-input-group.ant-input-group-compact > .ant-input:not(:first-child):not(:last-child) {
+    border-right-width: 1px;
+    border-right-color: #d9d9d9;
+}
