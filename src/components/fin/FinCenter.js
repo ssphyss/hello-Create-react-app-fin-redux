@@ -1,8 +1,12 @@
 import React from 'react';
 import { Row, Col, Card } from 'antd';
+// 引入
+import { connect } from 'react-redux';
 
-export default class FinCenter extends React.Component{
+class FinCenter extends React.Component{
     render(){    
+        // console.log('-----(FinCenter讀取)inputValue', this.props.inputValue)
+        // console.log('-----(FinCenter讀取)data', this.props.data)
         return(
             <div style={{ margin: '50px 20px', padding: '30px', backgroundColor: '#ffffff'}}  >
                 <h6>總覽</h6>
@@ -30,3 +34,19 @@ export default class FinCenter extends React.Component{
         )
     }
 }
+// 引入
+const mapStateToProps = (state) => {
+    return {        
+        inputValue: state.getIn(['fin','inputValue']),
+        data: state.getIn(['fin','data'])
+    }
+}
+
+// 引入
+const mapDispathToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(FinCenter);

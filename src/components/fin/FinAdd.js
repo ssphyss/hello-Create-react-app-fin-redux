@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Input, Select, DatePicker, Icon } from 'antd';
+// 引入
+import { connect } from 'react-redux';
 
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -31,11 +33,13 @@ const Option = Select.Option;
 // function onPanelChange(value, mode) {
 //     console.log(value, mode);
 // }
-export default class FinAdd extends React.Component{
+class FinAdd extends React.Component{
     state = {
         dataSource: [],
       }
     render(){
+        // console.log('-----(FinAdd讀取)inputValue', this.props.inputValue)
+        // console.log('-----(FinAdd讀取)data', this.props.data)
         return(
             <div style={{ margin: '50px 20px', padding: '30px', backgroundColor: '#ffffff'}} >
                 <h6>新增</h6>  
@@ -70,3 +74,20 @@ export default class FinAdd extends React.Component{
         )
     }
 }
+
+// 引入
+const mapStateToProps = (state) => {
+    return {        
+        inputValue: state.getIn(['fin','inputValue']),
+        data: state.getIn(['fin','data'])
+    }
+}
+
+// 引入
+const mapDispathToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(FinAdd);

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Table, Divider, Tag, Icon } from 'antd';
-
-export default class FinItem extends React.Component{
+// 引入
+import { connect } from 'react-redux';
+class FinItem extends React.Component{
     render(){    
-
+        // console.log('-----(FinItem讀取)inputValue', this.props.inputValue)
+        // console.log('-----(FinItem讀取)data', this.props.data)
         // 設定表檔頭欄位 
         const columns = [
         {
@@ -40,20 +42,16 @@ export default class FinItem extends React.Component{
             dataIndex: 'category',    
             // render: text => <a href="javascript:;">{text}</a>,     
             render: (category, record) => {   
-                console.log(category ,record);
+                // console.log(category ,record);
                 switch (category) {
                     case 1:
-                        return <span key={1}>旅遊相關</span>
-                        break;
+                        return <span key={1}>旅遊相關</span>                       
                     case 2:
-                        return <span key={2}>旅遊相關</span>
-                        break;
+                        return <span key={2}>旅遊相關</span>                        
                     case 3:
-                        return <span key={3}>交通相關</span>
-                        break;
+                        return <span key={3}>交通相關</span>                        
                     case 4:
-                        return <span key={4}>其他相關</span>
-                        break;
+                        return <span key={4}>其他相關</span>                        
                     default:
                         break;
                 }                
@@ -134,3 +132,20 @@ export default class FinItem extends React.Component{
         )
     }
 }
+
+// 引入
+const mapStateToProps = (state) => {
+    return {        
+        inputValue: state.getIn(['fin','inputValue']),
+        data: state.getIn(['fin','data'])
+    }
+}
+
+// 引入
+const mapDispathToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(FinItem);
