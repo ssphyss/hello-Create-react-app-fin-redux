@@ -127,7 +127,11 @@ class FinItem extends React.Component{
         return(
             <div style={{ margin: '50px 20px', padding: '30px', backgroundColor: '#ffffff'}} >
                 <h6>列表清單</h6>  
-                <Table columns={columns} dataSource={data} rowSelection={rowSelection}/>
+                <Table 
+                    columns={columns} 
+                    dataSource={data} 
+                    rowSelection={rowSelection}
+                />
             </div>
         )
     }

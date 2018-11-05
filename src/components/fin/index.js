@@ -5,14 +5,12 @@ import FinAdd from './FinAdd.js';
 import FinItem from './FinItem.js';
 // 引入
 import { connect } from 'react-redux';
-// 統一從store裡面取就好
-import { actionCreators } from './store';
 import'./index.scss';
 
 class Fin extends React.Component{    
     render(){ 
-        console.log('-----inputValue', this.props.inputValue)
-        console.log('-----data', this.props.data)
+        // console.log('-----inputValue', this.props.inputValue)
+        // console.log('-----data', this.props.data)
         return(
             <div className='wrapper--fin'>
                 <div className='finbox'>

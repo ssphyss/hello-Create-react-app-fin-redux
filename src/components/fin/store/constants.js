@@ -1,6 +1,15 @@
-// export const SEARCH_FOCUS = 'search_focus';  // 錯
-// // export const SEARCH_BLUR = 'search_blur';    // 錯
+// 5.
+export const ADD_DATE = 'fin/ADD_DATE';
 
-// export const SEARCH_FOCUS = 'todoList/SEARCH_FOCUS';
-// export const SEARCH_BLUR = 'todoList/SEARCH_BLUR';
-// export const CHANGE_LIST = 'todoList/CHANGE_LIST';
+// 10.
+export const ADD_VALUE = 'fin/ADD_VALUE';
+
+// 15.
+export const ADD_DESC = 'fin/ADD_DESC';
+
+// 23.
+export const ADD_SELECT1 = 'fin/ADD_SELECT1';
+export const ADD_SELECT2 = 'fin/ADD_SELECT2';
+
+// 28.
+export const ADD_BTN = 'fin/ADD_BTN';
