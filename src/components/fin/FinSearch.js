@@ -16,7 +16,7 @@ export default class FinSearch extends React.Component{
                     {/* 日期 */}
                     <DatePicker placeholder='請選擇日期'  style={{ marginRight: '10px', width: '150px' }} />  
                     <span> - </span> <DatePicker placeholder='請選擇日期'  style={{ marginRight: '10px', width: '150px' }} />   
-                    <br/>
+                    
                     {/* 類別1 */}
                     <Select defaultValue="收入/支出" size="large" style={{ width: '120px' }} >
                         <Option value="Zhejiang"><Icon type="dollar" theme="outlined" />  收入</Option>

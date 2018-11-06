@@ -3,6 +3,8 @@ import FinCenter from './FinCenter.js';
 import FinSearch from './FinSearch.js';
 import FinAdd from './FinAdd.js';
 import FinItem from './FinItem.js';
+import FinDetail from './FinDetail.js';
+
 // 引入
 import { connect } from 'react-redux';
 import'./index.scss';
@@ -18,6 +20,7 @@ class Fin extends React.Component{
                     <FinSearch />
                     <FinAdd />
                     <FinItem />
+                    <FinDetail />
                 </div>    
             </div>
         )

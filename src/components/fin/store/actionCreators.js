@@ -10,7 +10,7 @@ import * as constants from './constants';
 
 // 4.日期框變更偵測
 export const getAddDateAction = (dateString) => {
-    console.log('dateString', dateString) 
+    // console.log('dateString', dateString) 
     return {
         type: constants.ADD_DATE,
         value: dateString
@@ -19,7 +19,7 @@ export const getAddDateAction = (dateString) => {
 
 // 9.金額框變更偵測
 export const getAddValueAction = (value) => {
-    console.log('value', value) 
+    // console.log('value', value) 
     return {
         type: constants.ADD_VALUE,
         value: value
@@ -28,7 +28,7 @@ export const getAddValueAction = (value) => {
 
 // 14.描述框變更偵測
 export const getAddDescAction = (value) => {
-    console.log('value', value) 
+    // console.log('value', value) 
     return {
         type: constants.ADD_DESC,
         value: value
@@ -37,7 +37,7 @@ export const getAddDescAction = (value) => {
 
 // 21.描述框變更偵測
 export const getAddSelect1Action = (value) => {
-    console.log('value', value) 
+    // console.log('value', value) 
     return {
         type: constants.ADD_SELECT1,
         value: value
@@ -46,7 +46,7 @@ export const getAddSelect1Action = (value) => {
 
 // 22.描述框變更偵測
 export const getAddSelect2Action = (value) => {
-    console.log('value', value) 
+    // console.log('value', value) 
     return {
         type: constants.ADD_SELECT2,
         value: value
@@ -56,41 +56,96 @@ export const getAddSelect2Action = (value) => {
 
 // 27.
 export const getAddBtnAction = () => {
-    console.log('按鈕value') 
+    // console.log('按鈕value') 
     return {
         type: constants.ADD_BTN
     }      
 }
 
+/**
+ * FinItem (id)
+ * */
+
+// 31.刪除
+export const getDeleteAction = (id) => {
+    // console.log('刪除按鈕Action', id) 
+    return {
+        type: constants.ITEM_DELETE,
+        id: id
+    }      
+}
+
+// 修改
+export const getEditAction = (id) => {
+    // console.log('修改按鈕Action', id) 
+    return {
+        type: constants.ITEM_EDIT,
+        id: id
+    }      
+}
+
+// 取消Modal修改
+export const getCancelModalAction = (value) => {
+    // console.log('修改按鈕取消Action', value)
+    return {
+        type: constants.DETAIL_CANCLE,
+        value: value
+    }      
+}
+
+// Modal日期修改
+export const getModalDate = (id, dateString) => {
+    // console.log('Modal日期修改Action', id, dateString)
+    return {
+        type: constants.DETAIL_DATE,
+        payload: {id, dateString}
+    }      
+}
+
+
+// Modal類別1修改
+export const getModalSelect1 = (id, value) => {
+    console.log('Modal類別1修改Action', id, value)
+    return {
+        type: constants.DETAIL_S1,
+        payload: {id, value}
+    }      
+}
+
+// Modal類別2修改
+export const getModalSelect2 = (id, value) => {
+    console.log('Modal類別2修改Action', id, value)
+    return {
+        type: constants.DETAIL_S2,
+        payload: {id, value}
+    }      
+}
+
+// Modal金額修改
+export const getModalAmount = (id, value) => {
+    console.log('Modal金額修改', id, value)
+    return {
+        type: constants.DETAIL_AMOUNT,
+        payload: {id, value}
+    }      
+}
+
+// Modal描述修改
+export const getModalDesc = (id, value) => {
+    console.log('Modal描述修改', id, value)
+    return {
+        type: constants.DETAIL_DESC,
+        payload: {id, value}
+    }      
+}
+
+// Modal修改OK
+export const getModalOK = () => {
+    // console.log('Modal修改OKAction')
+    return {
+        type: constants.DETAIL_OK
+    }      
+}
 
 
 
-
-
-// // 15.送出新增
-// export const getItemSubmitAction = () => ({
-//     type: constants.ADD_SUBMIT
-// })
-
-
-// /**
-//  * TodoItem (value,index)
-//  * */
-
-// // 24.輸入框變更偵測
-// export const getListChangeAction = (value, index) => ({
-//     type: constants.ITEM_CHANGE,
-//     payload: {value, index}
-// })
-
-// // 30.刪除
-// export const getListDeleteAction = (index) => ({
-//     type: constants.ITEM_DELETE,
-//     payload: {index}
-// })
-
-// // 35.變更勾選
-// export const getCheckboxAction = (index) => ({
-//     type: constants.CHECKBOX_CHANGE,
-//     payload: {index}
-// })
