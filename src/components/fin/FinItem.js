@@ -145,10 +145,14 @@ class FinItem extends React.Component{
                     columns={columns} 
                     // dataSource={data} 
                     dataSource={this.props.data} 
+                    // dataSource={this.handlegetList}
                     rowSelection={rowSelection}
                 />
             </div>
         )
+    }
+    componentDidMount(){
+        this.props.handlegetList();
     }
 
     handlePopConfirm(e, id){
@@ -166,11 +170,13 @@ class FinItem extends React.Component{
             
             },
             onCancel() {
-                
+
             },
         });
 
     }
+
+    
 }
 
 // 引入
@@ -205,7 +211,16 @@ const mapDispathToProps = (dispatch) => {
         // 快速編輯
         handleEditQuick(){
 
+        },
+
+        // Ajax資料
+        handlegetList(){
+            console.log('獲取Ajax')
+            const action = actionCreators.getList();
+            dispatch(action);
+            // dispatch(actionCreators.getList());
         }
+        
     }
 }
 

@@ -42,3 +42,5 @@ export const DETAIL_AMOUNT = 'fin/DETAIL_AMOUNT';
 export const DETAIL_DESC = 'fin/DETAIL_DESC';
 
 export const DETAIL_OK = 'fin/DETAIL_OK';
+
+export const AJAX_LIST = 'fin/AJAX_LIST';

@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import axios from 'axios';
 
 /**
  * FinAdd (value)
@@ -52,7 +53,6 @@ export const getAddSelect2Action = (value) => {
         value: value
     }      
 }
-
 
 // 27.
 export const getAddBtnAction = () => {
@@ -147,5 +147,42 @@ export const getModalOK = () => {
     }      
 }
 
+// const changeList = (data) => ({
+//     type: constants.AJAX_LIST,
+//     data
+// })
 
+export const getList = () => {
+    return async (dispatch) => {
+        console.log('AAA');        
+        const res = await axios.get('https://easy-mock.com/mock/5be154988432fb26b49b1174/finapis/finList')
+            .catch(()=>{alert('err')})
 
+        console.log(res.data);
+
+        const data = res.data.result.data;
+
+        const action = {
+            type: constants.AJAX_LIST,
+            data        
+        }        
+        dispatch(action);
+        
+        // const action = changeList(data)
+
+        // axios.get('https://easy-mock.com/mock/5bc846bd4ff7d608864c06b0/jianshuApi/todolistAntd')
+        // .then((res)=>{
+        //     console.log('Ajax輸出：', res.data);
+        //     // const data = res.data;
+        //     // const action = {
+        //     //     type: 'AJAX_LIST',
+        //     //     data: data.data
+        //     // }
+        //     // dispatch(action);
+
+        //     // const action = changeList(data.data);
+        //     // dispatch(changeList(data.data));
+        // })
+        // .catch(()=>{alert('err')})
+    }
+}

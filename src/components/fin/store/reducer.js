@@ -312,5 +312,16 @@ export default (state = defaultState, action) => {
         return state.set('dataActive', dataActive);
     }   
     
+    //Ajax    
+    if (action.type === constants.AJAX_LIST) {   
+        console.log('Ajax收到 Reducer', action);   
+        console.log('Ajax收到data Reducer', action.data);       
+        // let {...dataActive} = state.get('dataActive');   
+        // dataActive.desc = action.payload.value;
+        // dataActive.id = action.payload.id;
+
+        let data = action.data;
+        return state.set('data', data);
+    }   
     return state;
 }
