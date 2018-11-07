@@ -215,7 +215,7 @@ const mapDispathToProps = (dispatch) => {
 
         // Ajax資料
         handlegetList(){
-            console.log('獲取Ajax')
+            // console.log('獲取Ajax')
             const action = actionCreators.getList();
             dispatch(action);
             // dispatch(actionCreators.getList());

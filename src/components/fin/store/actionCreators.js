@@ -2,6 +2,19 @@ import * as constants from './constants';
 import axios from 'axios';
 
 /**
+ * FinSearch (value)
+ * */
+
+// // 送出查詢
+// export const getSearchBtnAction = () => {
+//     console.log('查詢按鈕Action') 
+//     return {
+//         type: constants.SEARCH_BTN
+//     }      
+// }
+
+
+/**
  * FinAdd (value)
  * */
 // export const getAddDateAction = (dateString) => ({
@@ -54,7 +67,7 @@ export const getAddSelect2Action = (value) => {
     }      
 }
 
-// 27.
+// 27.送出新增
 export const getAddBtnAction = () => {
     // console.log('按鈕value') 
     return {
@@ -84,8 +97,13 @@ export const getEditAction = (id) => {
     }      
 }
 
-// 取消Modal修改
-export const getCancelModalAction = (value) => {
+/**
+ * FinDetail (value)
+ * */
+
+
+// 取消Modal修改getCancelModalAction
+export const getModalCancel = (value) => {
     // console.log('修改按鈕取消Action', value)
     return {
         type: constants.DETAIL_CANCLE,
@@ -105,7 +123,7 @@ export const getModalDate = (id, dateString) => {
 
 // Modal類別1修改
 export const getModalSelect1 = (id, value) => {
-    console.log('Modal類別1修改Action', id, value)
+    // console.log('Modal類別1修改Action', id, value)
     return {
         type: constants.DETAIL_S1,
         payload: {id, value}
@@ -114,7 +132,7 @@ export const getModalSelect1 = (id, value) => {
 
 // Modal類別2修改
 export const getModalSelect2 = (id, value) => {
-    console.log('Modal類別2修改Action', id, value)
+    // console.log('Modal類別2修改Action', id, value)
     return {
         type: constants.DETAIL_S2,
         payload: {id, value}
@@ -123,7 +141,7 @@ export const getModalSelect2 = (id, value) => {
 
 // Modal金額修改
 export const getModalAmount = (id, value) => {
-    console.log('Modal金額修改', id, value)
+    // console.log('Modal金額修改', id, value)
     return {
         type: constants.DETAIL_AMOUNT,
         payload: {id, value}
@@ -132,7 +150,7 @@ export const getModalAmount = (id, value) => {
 
 // Modal描述修改
 export const getModalDesc = (id, value) => {
-    console.log('Modal描述修改', id, value)
+    // console.log('Modal描述修改', id, value)
     return {
         type: constants.DETAIL_DESC,
         payload: {id, value}
@@ -154,7 +172,7 @@ export const getModalOK = () => {
 
 export const getList = () => {
     return async (dispatch) => {
-        console.log('AAA');        
+        // console.log('AAA');        
         const res = await axios.get('https://easy-mock.com/mock/5be154988432fb26b49b1174/finapis/finList')
             .catch(()=>{alert('err')})
 

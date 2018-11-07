@@ -61,7 +61,7 @@ class FinDetail extends React.Component{
                     title = '詳細資料'
                     visible = {this.props.isShowModal}
                     onOk= {this.props.handleSubmit}
-                    onCancel={() => this.props.handleCancelModal(false)}
+                    onCancel={() => this.props.handleModalCancel(false)}
                     okText='確定'
                     cancelText='取消'
                 >
@@ -144,20 +144,20 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
     return {
         // 30.
-        handleDelete(e, id){
-            e.preventDefault();            
-            const action = actionCreators.getDeleteAction(id);
-            dispatch(action);
-        },
+        // handleDelete(e, id){
+        //     e.preventDefault();            
+        //     const action = actionCreators.getDeleteAction(id);
+        //     dispatch(action);
+        // },
 
         // 取消Modal修改
-        handleCancelModal(value){
+        handleModalCancel(value){
             console.log(value)
-            const action = actionCreators.getCancelModalAction(value);
+            const action = actionCreators.getModalCancel(value);
             dispatch(action);
         },
 
-        // 修改日期
+        // 修改Modal修改日期
         handleModalDate(date, dateString, id){
             console.log('修改日期 id',id)
             console.log('修改日期', dateString)
@@ -172,28 +172,28 @@ const mapDispathToProps = (dispatch) => {
             dispatch(action);
         },
 
-        // 19.類別-收入支出偵測
+        // 19.Modal修改類別-收入支出偵測
         handleModalSelect1(id, value){
             console.log('選擇框1變更偵測',id, value)
             const action = actionCreators.getModalSelect1(id, value);
             dispatch(action);
         },
 
-        // 20.類別-旅遊交通偵測
+        // 20.Modal修改類別-旅遊交通偵測
         handleModalSelect2(id, value){
             console.log('選擇框2變更偵測',id, value)
             const action = actionCreators.getModalSelect2(id, value);
             dispatch(action);
         },
 
-        // 修改金額
+        // Modal修改金額
         handleModalAmount(id, value){
             console.log('修改金額', id, value)
             const action = actionCreators.getModalAmount(id, value);
             dispatch(action);
         },
 
-        // 修改描述
+        // Modal修改描述
         handleModalDesc(id, value){
             console.log('修改描述', id, value)
             const action = actionCreators.getModalDesc(id, value);

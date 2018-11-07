@@ -1,6 +1,6 @@
 import React from 'react';
 import FinCenter from './FinCenter.js';
-import FinSearch from './FinSearch.js';
+import FinSearch from './finSearch/FinSearch.js';
 import FinAdd from './FinAdd.js';
 import FinItem from './FinItem.js';
 import FinDetail from './FinDetail.js';

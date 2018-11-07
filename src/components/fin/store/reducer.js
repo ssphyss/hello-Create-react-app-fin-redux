@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import * as constantsSearch from './../finSearch/store/constants';
 import { /*fromJS,*/ Map } from 'immutable';
 
 // 把數據對象轉化成immutable對象
@@ -11,6 +12,20 @@ const defaultState = Map(
 
         // 預設的資料,當資料送出新增時,偵測變化
         dataDefault : 
+            {
+                key: '1',
+                id: '999',
+                name: 'John Brown',
+                date: '2018-01-01',
+                // types: ['收入'],
+                types: '',
+                category: '',
+                amount: '',
+                desc: ''
+            }
+        ,
+        // 預設的查詢資料,當資料送出新增時,偵測變化
+        dataSearch : 
             {
                 key: '1',
                 id: '999',
@@ -189,7 +204,7 @@ export default (state = defaultState, action) => {
 
     // 33.按鈕刪除偵測
     if (action.type === constants.ITEM_DELETE) {   
-        console.log('刪除按鈕Reducer', action.id); 
+        // console.log('刪除按鈕Reducer', action.id); 
 
         const i = action.id;
 
@@ -278,7 +293,7 @@ export default (state = defaultState, action) => {
    
     // Modal修改S1
     if (action.type === constants.DETAIL_S1) {   
-        console.log('Modal修改類別1 Reducer', action.payload);       
+        // console.log('Modal修改類別1 Reducer', action.payload);       
         let {...dataActive} = state.get('dataActive');   
         dataActive.types = action.payload.value;
         dataActive.id = action.payload.id;
@@ -287,7 +302,7 @@ export default (state = defaultState, action) => {
 
     // Modal修改S2
     if (action.type === constants.DETAIL_S2) {   
-        console.log('Modal修改類別2 Reducer', action.payload);       
+        // console.log('Modal修改類別2 Reducer', action.payload);       
         let {...dataActive} = state.get('dataActive');   
         dataActive.category = action.payload.value;
         dataActive.id = action.payload.id;
@@ -296,7 +311,7 @@ export default (state = defaultState, action) => {
 
     // Modal修改金額
     if (action.type === constants.DETAIL_AMOUNT) {   
-        console.log('Modal修改金額 Reducer', action.payload);       
+        // console.log('Modal修改金額 Reducer', action.payload);       
         let {...dataActive} = state.get('dataActive');   
         dataActive.amount = action.payload.value;
         dataActive.id = action.payload.id;
@@ -305,7 +320,7 @@ export default (state = defaultState, action) => {
 
     // Modal修改描述
      if (action.type === constants.DETAIL_DESC) {   
-        console.log('Modal修改金額 Reducer', action.payload);       
+        // console.log('Modal修改金額 Reducer', action.payload);       
         let {...dataActive} = state.get('dataActive');   
         dataActive.desc = action.payload.value;
         dataActive.id = action.payload.id;
@@ -314,8 +329,8 @@ export default (state = defaultState, action) => {
     
     //Ajax    
     if (action.type === constants.AJAX_LIST) {   
-        console.log('Ajax收到 Reducer', action);   
-        console.log('Ajax收到data Reducer', action.data);       
+        // console.log('Ajax收到 Reducer', action);   
+        // console.log('Ajax收到data Reducer', action.data);       
         // let {...dataActive} = state.get('dataActive');   
         // dataActive.desc = action.payload.value;
         // dataActive.id = action.payload.id;
@@ -323,5 +338,22 @@ export default (state = defaultState, action) => {
         let data = action.data;
         return state.set('data', data);
     }   
+
+    /**
+     * FinSearch (value)
+     * */
+    
+    // 29.Search按鈕AJAX查詢偵測
+    if (action.type === constantsSearch.AJAX_LIST_SEARCH) {   
+        console.log('查詢Ajax收到 Reducer---', action);   
+
+        // 對data屬性作變化所以複製一份
+        let [...data] = state.get('data'); 
+        console.log('data', data);     
+
+        data = action.data;
+        return state.set('data', data);
+    }
+
     return state;
 }

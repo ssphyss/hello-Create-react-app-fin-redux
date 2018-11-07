@@ -2,7 +2,6 @@
  * FinAdd
  * */
 
-
 // 5.
 export const ADD_DATE = 'fin/ADD_DATE';
 
@@ -44,3 +43,11 @@ export const DETAIL_DESC = 'fin/DETAIL_DESC';
 export const DETAIL_OK = 'fin/DETAIL_OK';
 
 export const AJAX_LIST = 'fin/AJAX_LIST';
+
+
+
+/**
+ * FinSearch
+ * */
+
+// export const SEARCH_BTN = 'fin/SEARCH_BTN';
