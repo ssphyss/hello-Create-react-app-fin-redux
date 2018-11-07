@@ -3,12 +3,21 @@ import { Table, Divider, Tag, Icon, Modal } from 'antd';
 // 引入
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+
+// 引入finDetail的store做finDetail彈出功能
+import { actionCreators as actionCreatorsDetail } from './finDetail/store';
+
 import moment from 'moment';
 
 class FinItem extends React.Component{
     render(){    
+        // console.log('------ ██████████ ------')
         // console.log('-----(FinItem讀取)inputValue', this.props.inputValue)
         // console.log('-----(FinItem讀取)data', this.props.data)
+        // console.log('-----(FinItem讀取)dataSearch', this.props.dataSearch)
+        // console.log('-----(FinItem讀取)dataActive', this.props.dataActive)
+        // console.log('-----(FinItem讀取)isShowModal', this.props.isShowModal)
+
         // 設定表檔頭欄位 
         const columns = [
         {
@@ -100,7 +109,7 @@ class FinItem extends React.Component{
                     <Divider type="vertical" />
                     {/* <a href=""><Icon type="file-text" theme="outlined" /> 修改 {record.name}</a> */}
                     <a 
-                        onClick={(e)=> this.props.handleEdit(e, record.id)}
+                        onClick={(e)=> this.props.handleEdit(e, record.id, this.props.data)}
                         
                         href='/'><Icon type="file-text" theme="outlined" /> 修改</a>
                     <Divider type="vertical" />
@@ -175,7 +184,6 @@ class FinItem extends React.Component{
         });
 
     }
-
     
 }
 
@@ -185,7 +193,9 @@ const mapStateToProps = (state) => {
         inputValue: state.getIn(['fin','inputValue']),
         dataDefault: state.getIn(['fin','dataDefault']),
         data: state.getIn(['fin','data']),
-        isShowModal: state.getIn(['fin','isShowModal']),
+        dataSearch: state.getIn(['finSearch','dataSearch']),
+        dataActive: state.getIn(['finDetail','dataActive']),
+        isShowModal: state.getIn(['finDetail','isShowModal']),
     }
 }
 
@@ -195,18 +205,24 @@ const mapDispathToProps = (dispatch) => {
         // 30. 刪除
         handleDelete(e, id){
             e.preventDefault();
-            // console.log('刪除索引',id)
             const action = actionCreators.getDeleteAction(id);
             dispatch(action);
         },
         
-        // 修改按鈕，彈出視窗
-        handleEdit(e, id){
-            e.preventDefault();
-            const action = actionCreators.getEditAction(id);
-            dispatch(action);
+        // // 修改按鈕，彈出視窗(----改到別的組件finDetail)
+        // handleEdit(e, id){
+        //     e.preventDefault();
+        //     const action = actionCreators.getEditAction(id);
+        //     dispatch(action);
+        // },
 
+        // 修改按鈕，彈出視窗(----別的組件finDetail)
+        handleEdit(e, id, data){
+            e.preventDefault();            
+            const action = actionCreatorsDetail.getEditAction(id, data);
+            dispatch(action);
         },
+        
         
         // 快速編輯
         handleEditQuick(){
@@ -218,7 +234,6 @@ const mapDispathToProps = (dispatch) => {
             // console.log('獲取Ajax')
             const action = actionCreators.getList();
             dispatch(action);
-            // dispatch(actionCreators.getList());
         }
         
     }

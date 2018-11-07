@@ -13,6 +13,13 @@ class FinSearch extends React.Component{
         dataSource: [],
     }
     render(){
+        console.log('------ ██████████ ------')
+        console.log('-----(FinSearch檔)inputValue', this.props.inputValue)
+        console.log('-----(FinSearch檔)data', this.props.data)
+        console.log('-----(FinSearch檔)dataSearch', this.props.dataSearch)
+        console.log('-----(FinSearch檔)dataActive', this.props.dataActive)
+        console.log('-----(FinSearch檔)isShowModal', this.props.isShowModal)
+
         // antD固定的,一定要這樣寫
         const { getFieldDecorator } = this.props.form;
         return(
@@ -164,9 +171,14 @@ class FinSearch extends React.Component{
 // 引入
 const mapStateToProps = (state) => {
     return {        
+
         inputValue: state.getIn(['fin','inputValue']),
         dataDefault: state.getIn(['fin','dataDefault']),
-        dataSearch: state.getIn(['finSearch','dataSearch'])
+        data: state.getIn(['fin','data']),
+
+        dataSearch: state.getIn(['finSearch','dataSearch']),
+        dataActive: state.getIn(['finDetail','dataActive']),
+        isShowModal: state.getIn(['finDetail','isShowModal']),
     }
 }
 

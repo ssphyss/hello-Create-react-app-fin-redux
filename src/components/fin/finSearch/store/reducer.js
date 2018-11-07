@@ -21,7 +21,7 @@ const defaultState = Map(
 )
 export default (state = defaultState, action) => {
     /**
-     * FinAdd
+     * FinSearch
      * */
 
     // 6.日期框From變更偵測Reducer，更新dataSearch

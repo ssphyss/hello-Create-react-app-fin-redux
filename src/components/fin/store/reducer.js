@@ -1,14 +1,14 @@
 import * as constants from './constants';
 import * as constantsSearch from './../finSearch/store/constants';
+// import * as constantsDetail from './../finDetail/store/constants';
 import { /*fromJS,*/ Map } from 'immutable';
 
 // 把數據對象轉化成immutable對象
 const defaultState = Map(
     {
         // focused: 444,
-        inputValue: '444',
-        // descDefault: '',
-        isShowModal: false,
+        // descDefault: '', 
+        inputValue: '444',               
 
         // 預設的資料,當資料送出新增時,偵測變化
         dataDefault : 
@@ -23,21 +23,7 @@ const defaultState = Map(
                 amount: '',
                 desc: ''
             }
-        ,
-        // 預設的查詢資料,當資料送出新增時,偵測變化
-        dataSearch : 
-            {
-                key: '1',
-                id: '999',
-                name: 'John Brown',
-                date: '2018-01-01',
-                // types: ['收入'],
-                types: '',
-                category: '',
-                amount: '',
-                desc: ''
-            }
-        ,
+        ,        
         // 列表清單
         data : [
             {
@@ -74,12 +60,32 @@ const defaultState = Map(
                 desc: '預設描述3'
             }
         ],   
+        /**
+         * FinSearch
+         * */
+        // // 預設的查詢資料,當資料送出新增時,偵測變化
+        // dataSearch : 
+        //     {
+        //         key: '1',
+        //         id: '999',
+        //         name: 'John Brown',
+        //         date: '2018-01-01',
+        //         // types: ['收入'],
+        //         types: '',
+        //         category: '',
+        //         amount: '',
+        //         desc: ''
+        //     }
+        // ,
+        /**
+         * FinDetail
+         * */
+        // isShowModal: false,
+        // // 選取的資料     
+        // dataActive:{},
 
-        // 選取的資料     
-        dataActive:{},
-
-        // 選取的資料修改     
-        dataActiveEdit:{}
+        // // 選取的資料修改     
+        // dataActiveEdit:{}
     }
 )
 export default (state = defaultState, action) => {
@@ -219,46 +225,49 @@ export default (state = defaultState, action) => {
         return state.set('data', data);
     }
     
-    // 33.修改編輯
-    if (action.type === constants.ITEM_EDIT) {   
-        // console.log('編輯按鈕Reducer', action.id);   
-        let [...data] = state.get('data');   
+    // // 33.修改編輯
+    // if (action.type === constants.ITEM_EDIT) {   
+    //     console.log('編輯按鈕Reducer--', action.id);   
+    //     let [...data] = state.get('data');   
     
-        let selectData;        
-        data.forEach((item)=>{
-            if(item.id === action.id){
-                selectData = item; 
-            }
-        })  
-        console.log('selectData', selectData)
-        return state.set('isShowModal', true).set('dataActive', selectData);
-    }
+    //     let selectData;        
+    //     data.forEach((item)=>{
+    //         if(item.id === action.id){
+    //             selectData = item; 
+    //         }
+    //     })  
+    //     console.log('selectData', selectData)
+    //     return state.set('isShowModal', true)
+
+    //     // return state.set('isShowModal', true).set('dataActive', selectData);
+    // }
 
 
-    // 34.取消Modal修改
-    if (action.type === constants.DETAIL_CANCLE) {   
-        // console.log('取消按鈕Reducer', action.value);                
-        // return state.set('isShowModal', false);
-        return state.set('isShowModal', action.value);
-    }
+    // // 34.取消Modal修改
+    // if (action.type === constants.DETAIL_CANCLE) {   
+    //     // console.log('取消按鈕Reducer', action.value);                
+    //     // return state.set('isShowModal', false);
+    //     return state.set('isShowModal', action.value);
+    // }
 
-    /**
-     * FinDetail (id)
-     * */
+    // /**
+    //  * FinDetail (id)
+    //  * */
 
-    // Modal修改日期
-    if (action.type === constants.DETAIL_DATE) {   
-        // console.log('修改日期Reducer', action.payload.dateString);       
-        let {...dataActive} = state.get('dataActive');   
-        dataActive.date = action.payload.dateString;
-        dataActive.id = action.payload.id;
-        return state.set('dataActive', dataActive);
-    }
+    // // Modal修改日期
+    // if (action.type === constants.DETAIL_DATE) {   
+    //     // console.log('修改日期Reducer', action.payload.dateString);       
+    //     let {...dataActive} = state.get('dataActive');   
+    //     dataActive.date = action.payload.dateString;
+    //     dataActive.id = action.payload.id;
+    //     return state.set('dataActive', dataActive);
+    // }
 
     // Modal修改OK
     if (action.type === constants.DETAIL_OK) {   
-        console.log('修改OKReducer');       
-        let {...dataActive} = state.get('dataActive');
+        console.log('修改OKReducer');    
+        let dataActive = action.dataActive
+        // let {...dataActive} = state.get('dataActive');
 
         console.log('修改dataActive', dataActive);       
 
@@ -279,7 +288,7 @@ export default (state = defaultState, action) => {
             // 如果有對應到id
             if(item.id === dataActive.id){
                 // console.log('有對應到id')
-                // 2.
+                // 2.賦值
                 Object.keys(dataActive).forEach((key)=>{
                     // item.date = dataActive.date;
                     // item.id = dataActive.id;
@@ -288,44 +297,45 @@ export default (state = defaultState, action) => {
             }  
             return item;            
         }) 
-        return state.set('data', data).set('isShowModal', false);
+        return state.set('data', data);
+        // return state.set('data', data).set('isShowModal', false);
     }
    
-    // Modal修改S1
-    if (action.type === constants.DETAIL_S1) {   
-        // console.log('Modal修改類別1 Reducer', action.payload);       
-        let {...dataActive} = state.get('dataActive');   
-        dataActive.types = action.payload.value;
-        dataActive.id = action.payload.id;
-        return state.set('dataActive', dataActive);
-    }
+    // // Modal修改S1
+    // if (action.type === constants.DETAIL_S1) {   
+    //     // console.log('Modal修改類別1 Reducer', action.payload);       
+    //     let {...dataActive} = state.get('dataActive');   
+    //     dataActive.types = action.payload.value;
+    //     dataActive.id = action.payload.id;
+    //     return state.set('dataActive', dataActive);
+    // }
 
-    // Modal修改S2
-    if (action.type === constants.DETAIL_S2) {   
-        // console.log('Modal修改類別2 Reducer', action.payload);       
-        let {...dataActive} = state.get('dataActive');   
-        dataActive.category = action.payload.value;
-        dataActive.id = action.payload.id;
-        return state.set('dataActive', dataActive);
-    }
+    // // Modal修改S2
+    // if (action.type === constants.DETAIL_S2) {   
+    //     // console.log('Modal修改類別2 Reducer', action.payload);       
+    //     let {...dataActive} = state.get('dataActive');   
+    //     dataActive.category = action.payload.value;
+    //     dataActive.id = action.payload.id;
+    //     return state.set('dataActive', dataActive);
+    // }
 
-    // Modal修改金額
-    if (action.type === constants.DETAIL_AMOUNT) {   
-        // console.log('Modal修改金額 Reducer', action.payload);       
-        let {...dataActive} = state.get('dataActive');   
-        dataActive.amount = action.payload.value;
-        dataActive.id = action.payload.id;
-        return state.set('dataActive', dataActive);
-    }
+    // // Modal修改金額
+    // if (action.type === constants.DETAIL_AMOUNT) {   
+    //     // console.log('Modal修改金額 Reducer', action.payload);       
+    //     let {...dataActive} = state.get('dataActive');   
+    //     dataActive.amount = action.payload.value;
+    //     dataActive.id = action.payload.id;
+    //     return state.set('dataActive', dataActive);
+    // }
 
-    // Modal修改描述
-     if (action.type === constants.DETAIL_DESC) {   
-        // console.log('Modal修改金額 Reducer', action.payload);       
-        let {...dataActive} = state.get('dataActive');   
-        dataActive.desc = action.payload.value;
-        dataActive.id = action.payload.id;
-        return state.set('dataActive', dataActive);
-    }   
+    // // Modal修改描述
+    //  if (action.type === constants.DETAIL_DESC) {   
+    //     // console.log('Modal修改金額 Reducer', action.payload);       
+    //     let {...dataActive} = state.get('dataActive');   
+    //     dataActive.desc = action.payload.value;
+    //     dataActive.id = action.payload.id;
+    //     return state.set('dataActive', dataActive);
+    // }   
     
     //Ajax    
     if (action.type === constants.AJAX_LIST) {   
@@ -342,7 +352,7 @@ export default (state = defaultState, action) => {
     /**
      * FinSearch (value)
      * */
-    
+
     // 29.Search按鈕AJAX查詢偵測
     if (action.type === constantsSearch.AJAX_LIST_SEARCH) {   
         console.log('查詢Ajax收到 Reducer---', action);   
